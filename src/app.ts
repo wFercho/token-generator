@@ -10,10 +10,15 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use(cors())
+app.use(cors({
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+}))
 
 app.get('/', (req, res) => {
-    res.send(__dirname+'/public/');
+    res.send(__dirname + '/public/');
 });
 
 app.post('/generateToken', (req, res) => {
@@ -36,7 +41,7 @@ app.post('/validateToken', (req, res) => {
     const token = req.body.token
 
     try {
-        if(isTokenValid(token)){
+        if (isTokenValid(token)) {
             console.log("ES VALIDO");
             res.status(201).send("Token valido")
         }
