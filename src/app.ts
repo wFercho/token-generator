@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { generateJWT, isTokenValid } from './utils/jwtUitl';
+import { generateJWT, isTokenValid, refreshToken } from './utils/jwtUitl';
 const app = express();
 const port = 3000;
 
@@ -18,6 +18,8 @@ app.use(cors({
 }))
 
 app.get('/', (req, res) => {
+    console.log("ROOT ROUTE");
+    
     res.send(__dirname + '/public/');
 });
 
@@ -32,7 +34,7 @@ app.post('/generateToken', (req, res) => {
 
 app.post('/refreshToken', (req, res) => {
     console.log(req.body)
-    const token = generateJWT()
+    const token = refreshToken()
     res.setHeader('content-type', 'text/plain');
     //res.setHeader("Authorization", token);
     res.send(token);

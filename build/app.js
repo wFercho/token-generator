@@ -18,6 +18,7 @@ app.use((0, cors_1.default)({
     "optionsSuccessStatus": 204
 }));
 app.get('/', (req, res) => {
+    console.log("ROOT ROUTE");
     res.send(__dirname + '/public/');
 });
 app.post('/generateToken', (req, res) => {
@@ -29,7 +30,7 @@ app.post('/generateToken', (req, res) => {
 });
 app.post('/refreshToken', (req, res) => {
     console.log(req.body);
-    const token = (0, jwtUitl_1.generateJWT)();
+    const token = (0, jwtUitl_1.refreshToken)();
     res.setHeader('content-type', 'text/plain');
     //res.setHeader("Authorization", token);
     res.send(token);
