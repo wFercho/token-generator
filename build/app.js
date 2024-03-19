@@ -28,6 +28,13 @@ app.post('/generateToken', (req, res) => {
     res.setHeader('content-type', 'text/plain');
     res.send(token);
 });
+app.post('/generate-token', (req, res) => {
+    console.log(req.body);
+    const token = (0, jwtUitl_1.generateJWT)();
+    //res.setHeader("Authorization", token);
+    res.setHeader('content-type', 'text/plain');
+    res.send(token);
+});
 app.post('/refreshToken', (req, res) => {
     console.log(req.body);
     const token = (0, jwtUitl_1.refreshToken)();

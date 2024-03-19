@@ -31,6 +31,15 @@ app.post('/generateToken', (req, res) => {
     res.send(token);
 });
 
+app.post('/generate-token', (req, res) => {
+    console.log(req.body)
+    const token = generateJWT()
+    //res.setHeader("Authorization", token);
+    res.setHeader('content-type', 'text/plain');
+    res.send(token);
+});
+
+
 
 app.post('/refreshToken', (req, res) => {
     console.log(req.body)
