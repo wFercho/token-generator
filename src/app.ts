@@ -4,6 +4,8 @@ import { generateJWT, isTokenValid } from './utils/jwtUitl';
 const app = express();
 const port = 3000;
 
+app.use(express.static('public'))
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -11,7 +13,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>');
+    res.send(__dirname+'/public/');
 });
 
 app.post('/generateToken', (req, res) => {

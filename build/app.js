@@ -8,11 +8,12 @@ const cors_1 = __importDefault(require("cors"));
 const jwtUitl_1 = require("./utils/jwtUitl");
 const app = (0, express_1.default)();
 const port = 3000;
+app.use(express_1.default.static('public'));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
-    res.send('<h1>Hello World!</h1>');
+    res.send(__dirname + '/public/');
 });
 app.post('/generateToken', (req, res) => {
     console.log(req.body);
