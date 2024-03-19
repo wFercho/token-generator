@@ -25,6 +25,7 @@ app.post('/generateToken', (req, res) => {
     console.log(req.body)
     const token = generateJWT()
     //res.setHeader("Authorization", token);
+    res.setHeader('content-type', 'text/plain');
     res.send(token);
 });
 
@@ -32,6 +33,7 @@ app.post('/generateToken', (req, res) => {
 app.post('/refreshToken', (req, res) => {
     console.log(req.body)
     const token = generateJWT()
+    res.setHeader('content-type', 'text/plain');
     //res.setHeader("Authorization", token);
     res.send(token);
 });
@@ -39,7 +41,7 @@ app.post('/refreshToken', (req, res) => {
 
 app.post('/validateToken', (req, res) => {
     const token = req.body.token
-
+    res.setHeader('content-type', 'text/plain');
     try {
         if (isTokenValid(token)) {
             console.log("ES VALIDO");

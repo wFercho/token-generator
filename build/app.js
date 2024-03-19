@@ -24,16 +24,19 @@ app.post('/generateToken', (req, res) => {
     console.log(req.body);
     const token = (0, jwtUitl_1.generateJWT)();
     //res.setHeader("Authorization", token);
+    res.setHeader('content-type', 'text/plain');
     res.send(token);
 });
 app.post('/refreshToken', (req, res) => {
     console.log(req.body);
     const token = (0, jwtUitl_1.generateJWT)();
+    res.setHeader('content-type', 'text/plain');
     //res.setHeader("Authorization", token);
     res.send(token);
 });
 app.post('/validateToken', (req, res) => {
     const token = req.body.token;
+    res.setHeader('content-type', 'text/plain');
     try {
         if ((0, jwtUitl_1.isTokenValid)(token)) {
             console.log("ES VALIDO");
